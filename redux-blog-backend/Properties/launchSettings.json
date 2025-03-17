@@ -1,0 +1,43 @@
+{
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger", // به صورت پیش‌فرض به Swagger هدایت می‌کنه
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5084"
+    },
+    "https": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger", // به صورت پیش‌فرض به Swagger هدایت می‌کنه
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7188;http://localhost:5084"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger", // به صورت پیش‌فرض به Swagger هدایت می‌کنه
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Server.IISIntegration"
+      },
+      "hostingModel": "OutOfProcess" // برای جلوگیری از خطای 500.35 مدل میزبانی رو به OutOfProcess تغییر دادم
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:62312",
+      "sslPort": 0 // SSL غیرفعاله، اگه بخوای می‌تونی یه پورت برای HTTPS بذاری مثلاً 44300
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@redux_blog_backend_HostAddress = http://localhost:5084
+
+GET {{redux_blog_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
