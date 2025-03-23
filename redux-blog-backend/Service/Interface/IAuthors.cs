@@ -30,5 +30,5 @@ public interface IAuthors
     /// </summary>
     /// <param name="AuthorID"></param>
     /// <returns></returns>
-    Task<bool> DeleteAuthorAsync(int AuthorID);
+    Task<int> DeleteAuthorAsync(int AuthorID);
 }

@@ -16,6 +16,17 @@
             <param name="services">کالکشن سرویس‌ها</param>
             <returns></returns>
         </member>
+        <member name="T:NotFoundException">
+            <summary>
+            کلاس خطا یافت نشد
+            </summary>
+        </member>
+        <member name="M:NotFoundException.#ctor(System.String)">
+            <summary>
+            سازنده کلاس خطا یافت نشد
+            </summary>
+            <param name="message"></param>
+        </member>
         <member name="T:SwaggerExtention">
             <summary>
             کلاس افزودنی برای پیکربندی Swagger
@@ -44,10 +55,37 @@
             </summary>
             <param name="rAuthors"></param>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.GetAllAuthors">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.GetAllAuthorsAsync">
             <summary>
             نمایش لیست نویسنده ها
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+            <summary>
+            نمایش یک نویسنده
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.InsertAuthorAsync(VM_Authors_Insert_Search)">
+            <summary>
+            اضافه کردن نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.UpdateAuthorAsync(VM_Authors_Update)">
+            <summary>
+            ویرایش نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.DeleteAuthorAsync(System.Int32)">
+            <summary>
+            حذف نویسنده
+            </summary>
+            <param name="AuthorID"></param>
             <returns></returns>
         </member>
         <member name="T:redux_blog_backend.Infrastructure.Contexts.SqlServer">

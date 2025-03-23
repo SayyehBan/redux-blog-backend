@@ -14,7 +14,7 @@ public class RAuthors : IAuthors
     /// <param name="AuthorID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<bool> DeleteAuthorAsync(int AuthorID)
+    public async Task<int> DeleteAuthorAsync(int AuthorID)
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
@@ -23,7 +23,7 @@ public class RAuthors : IAuthors
             {
                 AuthorID = AuthorID
             };
-            var result = await connection.QuerySingleAsync<bool>(sql, parameters, commandType: System.Data.CommandType.StoredProcedure);
+            var result = await connection.QuerySingleAsync<int>(sql, parameters, commandType: System.Data.CommandType.StoredProcedure);
             return result;
         }
     }
