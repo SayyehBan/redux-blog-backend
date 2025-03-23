@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>redux-blog-backend</name>
+    </assembly>
+    <members>
+        <member name="T:ConfigureTransient">
+            <summary>
+            کلاس پیکربندی سرویس‌های موقت
+            </summary>
+        </member>
+        <member name="M:ConfigureTransient.ConfigureTransients(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            پیکربندی سرویس‌های موقت در کانتینر DI
+            </summary>
+            <param name="services">کالکشن سرویس‌ها</param>
+            <returns></returns>
+        </member>
+        <member name="T:SwaggerExtention">
+            <summary>
+            کلاس افزودنی برای پیکربندی Swagger
+            </summary>
+        </member>
+        <member name="M:SwaggerExtention.AddOurSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            افزودن و پیکربندی Swagger به سرویس‌ها
+            </summary>
+            <param name="services">کالکشن سرویس‌ها</param>
+            <returns>کالکشن سرویس‌های به‌روز شده</returns>
+        </member>
+        <member name="T:redux_blog_backend.Controllers.AuthorsController">
+            <summary>
+            کنترلر نویسنده
+            </summary>
+        </member>
+        <member name="F:redux_blog_backend.Controllers.AuthorsController.rAuthors">
+            <summary>
+            سرویس نویسنده
+            </summary>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.#ctor(RAuthors)">
+            <summary>
+            سازنده کنترلر نویسنده
+            </summary>
+            <param name="rAuthors"></param>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.GetAllAuthors">
+            <summary>
+            نمایش لیست نویسنده ها
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:redux_blog_backend.Infrastructure.Contexts.SqlServer">
+            <summary>
+            کلاس تنظیمات اتصال به پایگاه داده SQL Server
+            </summary>
+        </member>
+        <member name="M:redux_blog_backend.Infrastructure.Contexts.SqlServer.ConnectionString">
+            <summary>
+            ایجاد رشته اتصال به پایگاه داده
+            </summary>
+            <returns>رشته اتصال به SQL Server</returns>
+        </member>
+        <member name="T:VM_Authors">
+            <summary>
+            نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors.AuthorID">
+            <summary>
+            شناسه نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors.FirstName">
+            <summary>
+            نام نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors.LastName">
+            <summary>
+            نام خانوادگی نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors.CreatedDate">
+            <summary>
+            تاریخ ثبت نویسنده
+            </summary>
+        </member>
+        <member name="T:VM_Authors_Insert_Search">
+            <summary>
+            جستجو و ثبت نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors_Insert_Search.FirstName">
+            <summary>
+            نام نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors_Insert_Search.LastName">
+            <summary>
+            نام خانوادگی نویسنده
+            </summary>
+        </member>
+        <member name="T:VM_Authors_Update">
+            <summary>
+            ویرایش نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors_Update.AuthorID">
+            <summary>
+            شناسه نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors_Update.FirstName">
+            <summary>
+            نام نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Authors_Update.LastName">
+            <summary>
+            نام خانوادگی نویسنده
+            </summary>
+        </member>
+        <member name="T:IAuthors">
+            <summary>
+            نویسنده
+            </summary>
+        </member>
+        <member name="M:IAuthors.GetAllAuthorsAsync">
+            <summary>
+            دریافت لیست نویسنده ها
+            </summary>
+        </member>
+        <member name="M:IAuthors.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+            <summary>
+            جستجو بر اساس نام و نام خانوادگی نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IAuthors.InsertAuthorAsync(VM_Authors_Insert_Search)">
+            <summary>
+            ذخیره نویسنده جدید در دیتابیس
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IAuthors.UpdateAuthorAsync(VM_Authors_Update)">
+            <summary>
+            ویرایش نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IAuthors.DeleteAuthorAsync(System.Int32)">
+            <summary>
+            حذف نویسنده
+            </summary>
+            <param name="AuthorID"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RAuthors">
+            <summary>
+            نویسنده
+            </summary>
+        </member>
+        <member name="M:RAuthors.DeleteAuthorAsync(System.Int32)">
+            <summary>
+            حذف نویسنده
+            </summary>
+            <param name="AuthorID"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RAuthors.GetAllAuthorsAsync">
+            <summary>
+            نمایش لیست نویسنده ها
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RAuthors.InsertAuthorAsync(VM_Authors_Insert_Search)">
+            <summary>
+            ثبت نویسنده جدید در دیتابیس
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RAuthors.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+            <summary>
+            جستجو بر اساس نام و نام خانوادگی نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RAuthors.UpdateAuthorAsync(VM_Authors_Update)">
+            <summary>
+            ویرایش نویسنده
+            </summary>
+            <param name="author"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+    </members>
+</doc>
