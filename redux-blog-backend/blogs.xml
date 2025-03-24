@@ -55,37 +55,94 @@
             </summary>
             <param name="rAuthors"></param>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.GetAllAuthorsAsync">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.GetAllAsync">
             <summary>
             نمایش لیست نویسنده ها
             </summary>
             <returns></returns>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.SearchAsync(VM_Authors_Insert_Search)">
             <summary>
             نمایش یک نویسنده
             </summary>
             <returns></returns>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.InsertAuthorAsync(VM_Authors_Insert_Search)">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.InsertAsync(VM_Authors_Insert_Search)">
             <summary>
             اضافه کردن نویسنده
             </summary>
             <param name="author"></param>
             <returns></returns>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.UpdateAuthorAsync(VM_Authors_Update)">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.UpdateAsync(VM_Authors_Update)">
             <summary>
             ویرایش نویسنده
             </summary>
             <param name="author"></param>
             <returns></returns>
         </member>
-        <member name="M:redux_blog_backend.Controllers.AuthorsController.DeleteAuthorAsync(System.Int32)">
+        <member name="M:redux_blog_backend.Controllers.AuthorsController.DeleteAsync(System.Int32)">
             <summary>
             حذف نویسنده
             </summary>
             <param name="AuthorID"></param>
+            <returns></returns>
+        </member>
+        <member name="T:redux_blog_backend.Controllers.BlogsController">
+            <summary>
+            کنترلر وبلاگ
+            </summary>
+        </member>
+        <member name="F:redux_blog_backend.Controllers.BlogsController.rBlogs">
+            <summary>
+            سرویس وبلاگ
+            </summary>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.#ctor(RBlogs)">
+            <summary>
+            سازنده کنترلر وبلاگ
+            </summary>
+            <param name="rBlogs"></param>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.GetAllAsync">
+            <summary>
+            نمایش لیست وبلاگ ها
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.FindIDAsync(System.Int32)">
+            <summary>
+            نمایش یک وبلاگ بر اساس شناسه
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.DeleteAsync(System.Int32)">
+            <summary>
+            حذف وبلاگ بر اساس شناسه
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.InsertAsync(VM_Blogs_Insert)">
+            <summary>
+            ذخیره وبلاگ جدید
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.SearchAsync(System.String)">
+            <summary>
+            جستجو وبلاگ بر اساس عنوان
+            </summary>
+            <param name="Title"></param>
+            <returns></returns>
+        </member>
+        <member name="M:redux_blog_backend.Controllers.BlogsController.UpdateAsync(VM_Blogs_Update)">
+            <summary>
+            ویرایش وبلاگ
+            </summary>
+            <param name="update"></param>
             <returns></returns>
         </member>
         <member name="T:redux_blog_backend.Infrastructure.Contexts.SqlServer">
@@ -159,42 +216,188 @@
             نام خانوادگی نویسنده
             </summary>
         </member>
+        <member name="T:VM_Blogs">
+            <summary>
+            وبلاگ
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.BlogID">
+            <summary>
+            شناسه مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Title">
+            <summary>
+            عنوان مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Contents">
+            <summary>
+            توضیحات مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.AuthorID">
+            <summary>
+            شناسه نویسنده
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.CreatedDate">
+            <summary>
+            تاریخ ثبت مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.PostReactionsID">
+            <summary>
+            شناسه واکنش مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.ThumbsUp">
+            <summary>
+            تعداد لایک ThumbsUp 
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Hooray">
+            <summary>
+            تعداد لایک Hooray 
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Heart">
+            <summary>
+            تعداد لایک Heart
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Rocket">
+            <summary>
+            تعداد لایک Rocket
+            </summary>
+        </member>
+        <member name="P:VM_Blogs.Eyes">
+            <summary>
+            تعداد لایک Eyes
+            </summary>
+        </member>
+        <member name="T:VM_Blogs_Insert">
+            <summary>
+            درج وبلاگ
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Insert.Title">
+            <summary>
+            عنوان مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Insert.Contents">
+            <summary>
+            توضیحات مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Insert.AuthorID">
+            <summary>
+            شناسه نویسنده
+            </summary>
+        </member>
+        <member name="T:VM_Blogs_Update">
+            <summary>
+            ویرایش وبلاگ
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Update.BlogID">
+            <summary>
+            شناسه مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Update.Title">
+            <summary>
+            عنوان مقاله
+            </summary>
+        </member>
+        <member name="P:VM_Blogs_Update.Contents">
+            <summary>
+            توضیحات مقاله
+            </summary>
+        </member>
         <member name="T:IAuthors">
             <summary>
             نویسنده
             </summary>
         </member>
-        <member name="M:IAuthors.GetAllAuthorsAsync">
+        <member name="M:IAuthors.AuthorsGetAllAsync">
             <summary>
             دریافت لیست نویسنده ها
             </summary>
         </member>
-        <member name="M:IAuthors.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+        <member name="M:IAuthors.AuthorsSearchAsync(VM_Authors_Insert_Search)">
             <summary>
             جستجو بر اساس نام و نام خانوادگی نویسنده
             </summary>
             <param name="author"></param>
             <returns></returns>
         </member>
-        <member name="M:IAuthors.InsertAuthorAsync(VM_Authors_Insert_Search)">
+        <member name="M:IAuthors.AuthorsInsertAsync(VM_Authors_Insert_Search)">
             <summary>
             ذخیره نویسنده جدید در دیتابیس
             </summary>
             <param name="author"></param>
             <returns></returns>
         </member>
-        <member name="M:IAuthors.UpdateAuthorAsync(VM_Authors_Update)">
+        <member name="M:IAuthors.AuthorsUpdateAsync(VM_Authors_Update)">
             <summary>
             ویرایش نویسنده
             </summary>
             <param name="author"></param>
             <returns></returns>
         </member>
-        <member name="M:IAuthors.DeleteAuthorAsync(System.Int32)">
+        <member name="M:IAuthors.AuthorsDeleteAsync(System.Int32)">
             <summary>
             حذف نویسنده
             </summary>
             <param name="AuthorID"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IBlogs">
+            <summary>
+            وبلاگ   
+            </summary>
+        </member>
+        <member name="M:IBlogs.BlogsDeleteAsync(System.Int32)">
+            <summary>
+            حذف وبلاگ
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IBlogs.BlogsFindIDAsync(System.Int32)">
+            <summary>
+            یافتن وبلاگ بر اساس شناسه
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IBlogs.BlogsGetAllAsync">
+            <summary>
+            دریافت لیست وبلاگ ها
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IBlogs.BlogsInsertAsync(VM_Blogs_Insert)">
+            <summary>
+            درج وبلاگ
+            </summary>
+            <param name="blog"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IBlogs.BlogsSearchAsync(System.String)">
+            <summary>
+            جستجو وبلاگ بر اساس عنوان
+            </summary>
+            <param name="Title"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IBlogs.BlogsUpdateAsync(VM_Blogs_Update)">
+            <summary>
+            ویرایش وبلاگ
+            </summary>
+            <param name="blog"></param>
             <returns></returns>
         </member>
         <member name="T:RAuthors">
@@ -202,7 +405,7 @@
             نویسنده
             </summary>
         </member>
-        <member name="M:RAuthors.DeleteAuthorAsync(System.Int32)">
+        <member name="M:RAuthors.AuthorsDeleteAsync(System.Int32)">
             <summary>
             حذف نویسنده
             </summary>
@@ -210,14 +413,14 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:RAuthors.GetAllAuthorsAsync">
+        <member name="M:RAuthors.AuthorsGetAllAsync">
             <summary>
             نمایش لیست نویسنده ها
             </summary>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:RAuthors.InsertAuthorAsync(VM_Authors_Insert_Search)">
+        <member name="M:RAuthors.AuthorsInsertAsync(VM_Authors_Insert_Search)">
             <summary>
             ثبت نویسنده جدید در دیتابیس
             </summary>
@@ -225,7 +428,7 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:RAuthors.SearchAuthorsAsync(VM_Authors_Insert_Search)">
+        <member name="M:RAuthors.AuthorsSearchAsync(VM_Authors_Insert_Search)">
             <summary>
             جستجو بر اساس نام و نام خانوادگی نویسنده
             </summary>
@@ -233,11 +436,63 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:RAuthors.UpdateAuthorAsync(VM_Authors_Update)">
+        <member name="M:RAuthors.AuthorsUpdateAsync(VM_Authors_Update)">
             <summary>
             ویرایش نویسنده
             </summary>
             <param name="author"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:RBlogs">
+            <summary>
+            repository وبلاگ
+            </summary>
+        </member>
+        <member name="M:RBlogs.BlogsDeleteAsync(System.Int32)">
+            <summary>
+            حذف وبلاگ
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RBlogs.BlogsFindIDAsync(System.Int32)">
+            <summary>
+            یافتن وبلاگ بر اساس شناسه
+            </summary>
+            <param name="BlogID"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RBlogs.BlogsGetAllAsync">
+            <summary>
+            دریافت لیست وبلاگ ها
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RBlogs.BlogsInsertAsync(VM_Blogs_Insert)">
+            <summary>
+            درج وبلاگ
+            </summary>
+            <param name="blog"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RBlogs.BlogsSearchAsync(System.String)">
+            <summary>
+            جستجو وبلاگ بر اساس عنوان
+            </summary>
+            <param name="Title"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:RBlogs.BlogsUpdateAsync(VM_Blogs_Update)">
+            <summary>
+            ویرایش وبلاگ
+            </summary>
+            <param name="blog"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>

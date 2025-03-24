@@ -11,5 +11,6 @@ public class ConfigureTransient
     public void ConfigureTransients(IServiceCollection services)
     {
         services.AddTransient<RAuthors>();
+        services.AddTransient<RBlogs>();
     }
 }

@@ -14,11 +14,11 @@ public class RAuthors : IAuthors
     /// <param name="AuthorID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<int> DeleteAuthorAsync(int AuthorID)
+    public async Task<int> AuthorsDeleteAsync(int AuthorID)
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
-            var sql = "dbo.DeleteAuthor";
+            var sql = "dbo.AuthorsDelete";
             var parameters = new
             {
                 AuthorID = AuthorID
@@ -32,7 +32,7 @@ public class RAuthors : IAuthors
     /// </summary>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<IEnumerable<VM_Authors>> GetAllAuthorsAsync()
+    public async Task<IEnumerable<VM_Authors>> AuthorsGetAllAsync()
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
@@ -48,11 +48,11 @@ public class RAuthors : IAuthors
     /// <param name="author"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<VM_Authors> InsertAuthorAsync(VM_Authors_Insert_Search author)
+    public async Task<VM_Authors> AuthorsInsertAsync(VM_Authors_Insert_Search author)
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
-            var sql = "dbo.InsertAuthor";
+            var sql = "dbo.AuthorsInsert";
             await connection.OpenAsync();
             var parameters = new
             {
@@ -69,11 +69,11 @@ public class RAuthors : IAuthors
     /// <param name="author"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<IEnumerable<VM_Authors>> SearchAuthorsAsync(VM_Authors_Insert_Search author)
+    public async Task<IEnumerable<VM_Authors>> AuthorsSearchAsync(VM_Authors_Insert_Search author)
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
-            var sql = "dbo.SearchAuthors";
+            var sql = "dbo.AuthorsSearch";
             var parameters = new
             {
                 FirstName = StringExtensions.CleanString(author.FirstName ?? ""),
@@ -89,11 +89,11 @@ public class RAuthors : IAuthors
     /// <param name="author"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<VM_Authors> UpdateAuthorAsync(VM_Authors_Update author)
+    public async Task<VM_Authors> AuthorsUpdateAsync(VM_Authors_Update author)
     {
         using (var connection = new SqlConnection(SqlServer.ConnectionString()))
         {
-            var sql = "dbo.UpdateAuthor";
+            var sql = "dbo.AuthorsUpdate";
             var parameters = new
             {
                 AuthorID = author.AuthorID,

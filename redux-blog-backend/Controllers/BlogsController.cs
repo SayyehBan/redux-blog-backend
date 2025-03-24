@@ -1,28 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc;
 namespace redux_blog_backend.Controllers
 {
     /// <summary>
-    /// کنترلر نویسنده
+    /// کنترلر وبلاگ
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AuthorsController : ControllerBase
+    public class BlogsController : ControllerBase
     {
         /// <summary>
-        /// سرویس نویسنده
+        /// سرویس وبلاگ
         /// </summary>
-        private readonly RAuthors rAuthors;
+        private readonly RBlogs rBlogs;
         /// <summary>
-        /// سازنده کنترلر نویسنده
+        /// سازنده کنترلر وبلاگ
         /// </summary>
-        /// <param name="rAuthors"></param>
-        public AuthorsController(RAuthors rAuthors)
+        /// <param name="rBlogs"></param>
+        public BlogsController(RBlogs rBlogs)
         {
-            this.rAuthors = rAuthors;
+            this.rBlogs = rBlogs;
         }
         /// <summary>
-        /// نمایش لیست نویسنده ها
+        /// نمایش لیست وبلاگ ها
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -30,7 +29,7 @@ namespace redux_blog_backend.Controllers
         {
             try
             {
-                var result = await rAuthors.AuthorsGetAllAsync();
+                var result = await rBlogs.BlogsGetAllAsync();
                 if (result == null)
                 {
                     return NotFound();
@@ -40,30 +39,22 @@ namespace redux_blog_backend.Controllers
                     return new JsonResult(result);
                 }
             }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
             catch (Exception)
             {
                 return StatusCode(500, "خطایی رخ داده است.");
             }
-
         }
         /// <summary>
-        /// نمایش یک نویسنده
+        /// نمایش یک وبلاگ بر اساس شناسه
         /// </summary>
+        /// <param name="BlogID"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> SearchAsync([FromQuery] VM_Authors_Insert_Search search)
+        public async Task<IActionResult> FindIDAsync(int BlogID)
         {
             try
             {
-                if (search == null)
-                {
-                    return BadRequest("اطلاعات جستجو نامعتبر است."); // Changed from NotFound to BadRequest
-                }
-                var result = await rAuthors.AuthorsSearchAsync(search);
+                var result = await rBlogs.BlogsFindIDAsync(BlogID);
                 if (result == null)
                 {
                     return NotFound();
@@ -73,103 +64,132 @@ namespace redux_blog_backend.Controllers
                     return new JsonResult(result);
                 }
             }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
             catch (Exception)
             {
                 return StatusCode(500, "خطایی رخ داده است.");
             }
         }
         /// <summary>
-        /// اضافه کردن نویسنده
+        /// حذف وبلاگ بر اساس شناسه
         /// </summary>
-        /// <param name="author"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> InsertAsync([FromForm] VM_Authors_Insert_Search author)
-        {
-            try
-            {
-                if (author == null)
-                {
-                    return BadRequest("اطلاعات نویسنده نامعتبر است."); // Changed from NotFound to BadRequest
-                }
-                var result = await rAuthors.AuthorsInsertAsync(author);
-                if (result == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return new JsonResult(result);
-                }
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "خطایی رخ داده است.");
-            }
-        }
-        /// <summary>
-        /// ویرایش نویسنده
-        /// </summary>
-        /// <param name="author"></param>
-        /// <returns></returns>
-        [HttpPut]
-        public async Task<IActionResult> UpdateAsync([FromForm] VM_Authors_Update author)
-        {
-            try
-            {
-                if (author == null)
-                {
-                    return BadRequest("اطلاعات نویسنده نامعتبر است."); // Changed from NotFound to BadRequest
-                }
-                var result = await rAuthors.AuthorsUpdateAsync(author);
-                if (result == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return new JsonResult(result);
-                }
-            }
-            catch (NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "خطایی رخ داده است.");
-            }
-        }
-        /// <summary>
-        /// حذف نویسنده
-        /// </summary>
-        /// <param name="AuthorID"></param>
+        /// <param name="BlogID"></param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteAsync([FromQuery] int AuthorID)
+        public async Task<IActionResult> DeleteAsync([FromQuery] int BlogID)
         {
             try
             {
-                if (AuthorID == 0)
+                if (BlogID == 0)
                 {
-                    return BadRequest("شناسه نویسنده نامعتبر است."); // Changed from NotFound to BadRequest
+                    return BadRequest("شناسه وبلاگ نامعتبر است.");
                 }
-                var result = await rAuthors.AuthorsDeleteAsync(AuthorID);
+                var result = await rBlogs.BlogsDeleteAsync(BlogID);
                 if (result == 1)
                 {
-                    return Ok(result); // Return 200 OK with success message
+                    return Ok(result);
                 }
                 else
                 {
                     return NotFound();
+                }
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "خطایی رخ داده است.");
+            }
+        }
+        /// <summary>
+        /// ذخیره وبلاگ جدید
+        /// </summary>
+        /// <param name="insert"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> InsertAsync([FromForm] VM_Blogs_Insert insert)
+        {
+            try
+            {
+                if (insert == null)
+                {
+                    return BadRequest("اطلاعات ورودی نامعتبر است.");
+                }
+                var result = await rBlogs.BlogsInsertAsync(insert);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return new JsonResult(result);
+                }
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "خطایی رخ داده است.");
+            }
+        }
+        /// <summary>
+        /// جستجو وبلاگ بر اساس عنوان
+        /// </summary>
+        /// <param name="Title"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> SearchAsync([FromQuery] string Title)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Title))
+                {
+                    return BadRequest("عنوان وبلاگ نامعتبر است.");
+                }
+                var result = await rBlogs.BlogsSearchAsync(Title);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return new JsonResult(result);
+                }
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "خطایی رخ داده است.");
+            }
+        }
+        /// <summary>
+        /// ویرایش وبلاگ
+        /// </summary>
+        /// <param name="update"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromForm] VM_Blogs_Update update)
+        {
+            try
+            {
+                if (update == null)
+                {
+                    return BadRequest("اطلاعات ورودی نامعتبر است.");
+                }
+                var result = await rBlogs.BlogsUpdateAsync(update);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return new JsonResult(result);
                 }
             }
             catch (NotFoundException)
