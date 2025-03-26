@@ -12,5 +12,6 @@ public class ConfigureTransient
     {
         services.AddTransient<RAuthors>();
         services.AddTransient<RBlogs>();
+        services.AddTransient<RPostReactions>();
     }
 }

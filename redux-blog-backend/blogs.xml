@@ -156,6 +156,24 @@
             </summary>
             <returns>رشته اتصال به SQL Server</returns>
         </member>
+        <member name="T:PostReactionsController">
+            <summary>
+            کنترلر لایک مقاله
+            </summary>
+        </member>
+        <member name="M:PostReactionsController.#ctor(RPostReactions)">
+            <summary>
+            سازنده کنترلر لایک مقاله
+            </summary>
+            <param name="rPostReactions"></param>
+        </member>
+        <member name="M:PostReactionsController.UpdateAsync(VM_PostReactions)">
+            <summary>
+            دریافت واکنش مقاله بر اساس شناسه
+            </summary>
+            <param name="postReactions"></param>
+            <returns></returns>
+        </member>
         <member name="T:VM_Authors">
             <summary>
             نویسنده
@@ -316,6 +334,41 @@
             توضیحات مقاله
             </summary>
         </member>
+        <member name="T:VM_PostReactions">
+            <summary>
+            واکنش مقاله
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.PostReactionsID">
+            <summary>
+            شناسه واکنش مقاله
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.ThumbsUp">
+            <summary>
+            تعداد لایک ThumbsUp
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.Hooray">
+            <summary>
+            تعداد لایک Hooray
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.Heart">
+            <summary>
+            تعداد لایک Heart
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.Rocket">
+            <summary>
+            تعداد لایک Rocket
+            </summary>
+        </member>
+        <member name="P:VM_PostReactions.Eyes">
+            <summary>
+            تعداد لایک Eyes
+            </summary>
+        </member>
         <member name="T:IAuthors">
             <summary>
             نویسنده
@@ -398,6 +451,18 @@
             ویرایش وبلاگ
             </summary>
             <param name="blog"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IPostReactions">
+            <summary>
+            اینترفیس ایجاد لایک برای وبلاگ
+            </summary>
+        </member>
+        <member name="M:IPostReactions.PostReactionsUpdateAsync(VM_PostReactions)">
+            <summary>
+            دریافت واکنش مقاله بر اساس شناسه
+            </summary>
+            <param name="postReactions"></param>
             <returns></returns>
         </member>
         <member name="T:RAuthors">
@@ -493,6 +558,19 @@
             ویرایش وبلاگ
             </summary>
             <param name="blog"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:RPostReactions">
+            <summary>
+            ریپازیتوری لایک مقاله
+            </summary>
+        </member>
+        <member name="M:RPostReactions.PostReactionsUpdateAsync(VM_PostReactions)">
+            <summary>
+            دریافت واکنش مقاله بر اساس شناسه
+            </summary>
+            <param name="postReactions"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
