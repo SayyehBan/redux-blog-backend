@@ -6,7 +6,7 @@ public class VM_PostReactions
     /// <summary>
     /// شناسه واکنش مقاله
     /// </summary>
-    public int PostReactionsID { get; set; }
+    public int BlogID { get; set; }
     /// <summary>
     /// تعداد لایک ThumbsUp
     /// </summary>

@@ -25,8 +25,12 @@ public class PostReactionsController : ControllerBase
     {
         try
         {
+            if (postReactions.BlogID == 0)
+            {
+                return BadRequest("شناسه مقاله نامعتبر است.");
+            }
             var result = await rPostReactions.PostReactionsUpdateAsync(postReactions);
-            if (result == 0)
+            if (result == null)
             {
                 return NotFound();
             }

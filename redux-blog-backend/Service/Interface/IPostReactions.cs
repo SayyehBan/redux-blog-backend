@@ -8,5 +8,5 @@ public interface IPostReactions
     /// </summary>
     /// <param name="postReactions"></param>
     /// <returns></returns>
-    Task<int> PostReactionsUpdateAsync(VM_PostReactions postReactions);
+    Task<VM_Blogs> PostReactionsUpdateAsync(VM_PostReactions postReactions);
 }

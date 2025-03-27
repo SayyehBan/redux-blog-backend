@@ -339,7 +339,7 @@
             واکنش مقاله
             </summary>
         </member>
-        <member name="P:VM_PostReactions.PostReactionsID">
+        <member name="P:VM_PostReactions.BlogID">
             <summary>
             شناسه واکنش مقاله
             </summary>
